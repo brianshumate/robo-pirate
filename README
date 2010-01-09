@@ -22,7 +22,7 @@ The aim of Robo Pirate is to insult tweeps in the following ways:
 
 Edit robo_pirate.py and change the following variable values:
 
- * {{{username}}}: Set to your bot's Twitter user name
- * {{{password}}}: Set to your bot's Twitter password
+ * username: Set to your bot's Twitter user name
+ * password: Set to your bot's Twitter password
 
 
