@@ -1,0 +1,28 @@
+# Robo Pirate
+
+Robo pirate is a Twitter bot that is based on the @insult_bird
+Twitter bot code by Brent Woodruff (http://www.fprimex.com/).
+
+The aim of Robo Pirate is to insult tweeps in the following ways:
+
+* All replies made to @robo_pirate will be met w/ a retort
+* A random person he is following will get insult if no @ replies
+* Continuously insults tweeps that follow him, but who he cannot follow
+
+## Running Robo Pirate in Virtualenv
+
+1. Get virtualenv
+2. Create a virtualenv
+3. Install pip
+4. Install Python Twitter
+5. Configure the script
+6. Run the script
+
+### Configure the script
+
+Edit robo_pirate.py and change the following variable values:
+
+ * {{{username}}}: Set to your bot's Twitter user name
+ * {{{password}}}: Set to your bot's Twitter password
+
+
