@@ -1,8 +1,7 @@
 Robo Pirate (@robo_pirate)
 ==========================
 
-Robo pirate is a Twitter bot that is based on the @insult_bird
-Twitter bot code by [Brent Woodruff](http://www.brentwoodruff.com/).
+Robo pirate is a Twitter bot that is based on the [http://twitter.com/insult_bird](@insult_bird) Twitter bot code by [Brent Woodruff](http://www.brentwoodruff.com/).
 
 The aim of Robo Pirate is to insult tweeps in the following ways:
 
@@ -33,6 +32,6 @@ Edit robo_pirate.py and change the following variable values:
  
 > Please edit the different dictionaries which make up the bot's lexicon to create a unique personality for your bot, and don't just make a clone of robo_pirate itself.
 
-**Feel free follow the actual [@robo_pirate](http://twitter.com/robo_pirate) on Twitter**
+**Feel free follow the actual [http://twitter.com/insult_bird](@insult_bird) and [@robo_pirate](http://twitter.com/robo_pirate) bots on Twitter!**
 
 Thanks - share and enjoy! :)
