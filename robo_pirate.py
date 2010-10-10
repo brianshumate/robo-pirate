@@ -22,8 +22,9 @@ consumer_key = 'OAUTH CONSUMER KEY HERE'
 consumer_secret = 'OAUTH CONSUMER SECRET HERE'
 access_token = 'OAUTH ACCESS TOKEN HERE'
 access_token_secret = 'OAUTH ACCESS TOKEN SECRET HERE'
-store_filename = './tweets.store'
 re_fu = re.compile("^.*fuck[\s|!|.]*you.*$", flags=re.I)
+store_filename = './tweets.store'
+username = 'TWITTER USERNAME HERE'
 
 def get_insult():
     starters = ['Ahoy! Ye be', 'Arrr! Thar be', 'Avast! Ye be', 'Avast! Ye be more foul \'an', 'Avast! Thar be', 'Avast! Ye be resemblin\'', 'Aye! No doubt ye be', 'By my reckonin\' ye be', 'Blimey! Ye \'ppear t\' be', 'Come now, fer ye be', 'D\'ye see?! Ye must be', 'Sail ho! Yer filthier \'an', 'Scupper that \'an begone! Ye be', 'Holloa! Ye be', 'How are \'ee?! Ye be', 'Shiver me timbers! Ye be', 'Show a leg! Fer ye surely be', 'Sink me! Ye be', 'Stay yer tears! Ye be', 'Stint yer clack! Ye be', 'Stop yer clapper! Ye be', 'Yo ho! Ye be', 'Yo ho! Thar be', 'Yarrr! Ye be filthier \'an', 'Blimey! Ye be filthier \'an', 'Avast! Ye be filthier \'an', 'Yo ho! Ye be filthier \'an', 'Avast! Ye be nastier \'an', 'Yarrr! Ye be nastier \'an', 'Yo ho! Ye be nastier \'an', 'Blimey! Ye be nastier \'an', 'Yo ho ho! Ye be', 'Aye! Ye be!', 'Ye be remindin\' me of',]

@@ -33,6 +33,7 @@ Edit robo_pirate.py and change the following variable values:
  * `access_token`: Replace with your Twitter account's oAuth access token
  * `access_token_secret`: Replace with your Twitter account's oAuth access token secret
  * `store_filename`: (optional) Specify pickle storage file name.
+ * `username`: The Twitter account username
 
 See [4] for information on setting up oAuth.
 
