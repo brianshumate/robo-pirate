@@ -18,8 +18,10 @@ from sets import Set
 
 random.seed()
   
-username = 'TWITTER_NICK'
-password = 'CHANGEME'
+consumer_key = 'OAUTH CONSUMER KEY HERE'
+consumer_secret = 'OAUTH CONSUMER SECRET HERE'
+access_token = 'OAUTH ACCESS TOKEN HERE'
+access_token_secret = 'OAUTH ACCESS TOKEN SECRET HERE'
 store_filename = './tweets.store'
 re_fu = re.compile("^.*fuck[\s|!|.]*you.*$", flags=re.I)
 
