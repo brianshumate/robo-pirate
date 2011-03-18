@@ -3,10 +3,32 @@
 """
 robo_pirate.py
 
-Robo pirate is a Twitter bot that is based on the @insult_bird
-Twitter bot code by [Brent Woodruff](http://www.brentwoodruff.com/).
+Robo pirate is a Twitter bot that is a harmony of code being primarily
+written by [Brent Woodruff](http://www.brentwoodruff.com/) and vocabulary
+plus bits of code written by [Brian Shumate](http://brianshumate.com/).
 
 The aim of Robo Pirate is to insult tweeps in piratey ways.
+
+Copyright (c) 2010 Brian Shumate
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
 """
 import sys
 import re
@@ -14,10 +36,10 @@ import random
 import urllib2
 import cPickle as pickle
 import twitter
-from sets import Set  
+from sets import Set
 
 random.seed()
-  
+
 consumer_key = 'OAUTH CONSUMER KEY HERE'
 consumer_secret = 'OAUTH CONSUMER SECRET HERE'
 access_token = 'OAUTH ACCESS TOKEN HERE'
@@ -50,18 +72,18 @@ try:
     store_file = open(store_filename, 'rb')
     store = pickle.load(store_file)
 except IOError:
-    # Replying to everything since the beginning at this point == NO BUENO!
+    # Replying to all since the beginning at this point == NO BUENO!
     store = { 'last_reply_id':None, 'last_dm_id':None, }
 except pickle.PickleError:
     sys.exit(1)
 
-api = twitter.Api(username=username, password=password)  
-  
+api = twitter.Api(username=username, password=password)
+
 following = api.GetFriends()
 friend_names = Set()
 for friend in following:
     friend_names.add(friend.screen_name)
-  
+
 followers = api.GetFollowers()
 for follower in followers:
     if (not follower.screen_name in friend_names):
@@ -71,9 +93,6 @@ for follower in followers:
         except urllib2.HTTPError:
             msg = "@" + follower.screen_name + " "
             msg += get_insult()
-            # deboogink something
-            #api.PostUpdate(msg)
-            #print "Unable to follow " + follower.screen_name + ": " + msg
 
 for friend in friend_names:
     print friend

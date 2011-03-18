@@ -1,7 +1,9 @@
 Robo Pirate (@robo_pirate)
 ==========================
 
-Robo pirate is a Twitter bot that is based on the [@insult_bird](http://twitter.com/insult_bird) Twitter bot code by [Brent Woodruff](http://www.brentwoodruff.com/).
+Robo pirate is a Twitter bot that is a harmony of code being primarily
+written by [Brent Woodruff](http://www.brentwoodruff.com/) and vocabulary
+plus bits of code written by [Brian Shumate](http://brianshumate.com/).
 
 Now With oAuth Support!
 
