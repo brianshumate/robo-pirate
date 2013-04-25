@@ -77,7 +77,10 @@ except IOError:
 except pickle.PickleError:
     sys.exit(1)
 
-api = twitter.Api(username=username, password=password)
+api = twitter.Api(consumer_key=consumer_key,
+                    consumer_secret=consumer_secret,
+                    access_token_key=access_token,
+                    access_token_secret=access_token_secret)
 
 following = api.GetFriends()
 friend_names = Set()
