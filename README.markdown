@@ -1,7 +1,7 @@
 Robo Pirate (@robo_pirate)
 ==========================
 
-Robo pirate is a Twitter bot that is a harmony of code being primarily
+Robo Pirate is a Twitter bot that is a harmony of code being primarily
 written by [Brent Woodruff](http://www.brentwoodruff.com/) and vocabulary
 plus bits of code written by [Brian Shumate](http://brianshumate.com/).
 
