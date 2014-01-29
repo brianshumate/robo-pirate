@@ -16,7 +16,7 @@ The aim of Robo Pirate is to tweet insult in the following ways:
 
 0. Get [virtualenv](http://pypi.python.org/pypi/virtualenv)
 1. Create a virtualenv
-2. Install a recent [Python Twitter](http://code.google.com/p/python-twitter/) with OAuth2 support
+2. Install a recent [Python Twitter](http://code.google.com/p/python-twitter/) with OAuth support
 3. Configure and edit the script (see details below)
 4. Run the script
 5. Celebrate good times... C'MON!
