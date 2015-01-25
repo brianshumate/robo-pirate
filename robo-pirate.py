@@ -37,7 +37,7 @@ class RoboPirate(TwitterBot):
         ######################################
 
         # how often to tweet, in seconds
-        self.config['tweet_interval'] = 15 * 60     # default: 30 minutes
+        self.config['tweet_interval'] = 42 * 60     # default: 30 minutes
 
         # use this to define a (min, max) random range of how often to tweet
         # e.g., self.config['tweet_interval_range'] = (5*60, 10*60) # tweets every 5-10 minutes
