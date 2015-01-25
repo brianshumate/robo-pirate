@@ -1,0 +1,6 @@
+{
+    "API_Key": "TWITTER_API_KEY",
+    "API_Secret": "TWITTER_API_KEY_SECRET",
+    "Access_Token": "TWITTER_ACCESS_TOKEN",
+    "Access_Token_Secret": "TWITTER_ACCESS_TOKEN_SECRET"
+}
