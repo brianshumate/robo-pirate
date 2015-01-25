@@ -41,7 +41,7 @@
 
 ```
 
-This is the source for [@robo_pirate](https://twitter.com/robo_pirate/with_replies), a Twitter
+This is the source for [@robo-pirate](https://twitter.com/robo-pirate/with_replies), a Twitter
 bot whose one sole purpose is to insult Twitter users in a particularly
 pirate-y manner.
 
@@ -49,7 +49,7 @@ pirate-y manner.
 
 ### Note
 
-Replace all instances of *robo_pirate* in this project with the name of
+Replace all instances of *robo-pirate* in this project with the name of
 your own bot to begin making use of this code for yourself.
 
 Use `virtualenv` and `virtualenvwrapper` because Python is more fun with them.
@@ -57,8 +57,8 @@ Use `virtualenv` and `virtualenvwrapper` because Python is more fun with them.
 Clone this repository, the change into its top level directory:
 
 ```
-git clone https://github.com/brianshumate/robo_pirate.git
-cd robo_pirate
+git clone https://github.com/brianshumate/robo-pirate.git
+cd robo-pirate
 ```
 
 Then, to quote the venerable @densoneold,
@@ -66,9 +66,9 @@ Then, to quote the venerable @densoneold,
 > commands
 
 ```
-mkvirtualenv robo_pirate
+mkvirtualenv robo-pirate
 pip install -r requirements.txt
-cp robo_pirate/etc/access.json-dist robo_pirate/etc/access.json
+cp robo-pirate/etc/access.json-dist robo-pirate/etc/access.json
 ```
 
 Finally, edit `etc/access.json` and plug in your Twitter API keys, tokens,
@@ -79,7 +79,7 @@ and secrets.
 Run it like this:
 
 ```
-./robo_pirate.py
+./robo-pirate.py
 ```
 
 ## Thank You
