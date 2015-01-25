@@ -41,9 +41,12 @@
 
 ```
 
-This is the source for [@robo-pirate](https://twitter.com/robo-pirate/with_replies), a Twitter
+This is the source for [@robo-pirate](https://twitter.com/robo_pirate/with_replies), a Twitter
 bot whose one sole purpose is to insult Twitter users in a particularly
-pirate-y manner.
+pirate-y manner:
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/brianshumate">@brianshumate</a> Avast! Ye be more foul &#39;an a scurvish cask &#39;o horn swogglin&#39; Frenchmen.</p>&mdash; Robo Pirate (@robo_pirate) <a href="https://twitter.com/robo_pirate/status/559397014514204675">January 25, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Setup
 
