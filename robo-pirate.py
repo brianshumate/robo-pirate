@@ -155,12 +155,15 @@ class RoboPirate(TwitterBot):
         """
         text = self.get_insult()
         prefixed_text = prefix + ' ' + text
-        self.post_tweet(prefix + ' ' + text, reply_to=tweet)
 
-        # call this to fav the tweet!
-        # if something:
-        #     self.favorite_tweet(tweet)
+        # let's only reply 70% of the time, otherwise fave the twutt
+        def lucky(percent=70):
+            return random.randrange(100) < percent
 
+        if lucky():
+            self.post_tweet(prefix + ' ' + text, reply_to=tweet)
+        else:
+            self.favorite_tweet(tweet)
 
 if __name__ == '__main__':
     bot = RoboPirate()
