@@ -37,7 +37,7 @@ class RoboPirate(TwitterBot):
         ######################################
 
         # how often to tweet, in seconds
-        self.config['tweet_interval'] = 42 * 60     # default: 30 minutes
+        self.config['tweet_interval'] = 42 * 60     # 42 minutes
 
         # use this to define a (min, max) random range of how often to tweet
         # e.g., self.config['tweet_interval_range'] = (5*60, 10*60) # tweets every 5-10 minutes
@@ -47,16 +47,16 @@ class RoboPirate(TwitterBot):
         self.config['reply_direct_mention_only'] = False
 
         # only include bot followers (and original tweeter) in @-replies
-        self.config['reply_followers_only'] = True
+        self.config['reply_followers_only'] = False
 
         # fav any tweets that mention this bot?
         self.config['autofav_mentions'] = False
 
         # fav any tweets containing these keywords?
-        self.config['autofav_keywords'] = []
+        self.config['autofav_keywords'] = ['pirate', 'robot pirate', 'yarrr']
 
         # follow back all followers?
-        self.config['autofollow'] = False
+        self.config['autofollow'] = True
 
 
         ###########################################
