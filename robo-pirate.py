@@ -37,14 +37,14 @@ class RoboPirate(TwitterBot):
         ######################################
 
         # how often to tweet, in seconds
-        self.config['tweet_interval'] = 42 * 60     # 42 minutes
+        self.config['tweet_interval'] = 15 * 60     # 15 minutes
 
         # use this to define a (min, max) random range of how often to tweet
         # e.g., self.config['tweet_interval_range'] = (5*60, 10*60) # tweets every 5-10 minutes
         self.config['tweet_interval_range'] = None
 
         # only reply to tweets that specifically mention the bot
-        self.config['reply_direct_mention_only'] = False
+        self.config['reply_direct_mention_only'] = True
 
         # only include bot followers (and original tweeter) in @-replies
         self.config['reply_followers_only'] = False
@@ -153,6 +153,8 @@ class RoboPirate(TwitterBot):
         When calling post_tweet, you MUST include reply_to=tweet, or
         Twitter won't count it as a reply.
         """
+
+        """
         text = self.get_insult()
         prefixed_text = prefix + ' ' + text
 
@@ -164,6 +166,8 @@ class RoboPirate(TwitterBot):
             self.post_tweet(prefix + ' ' + text, reply_to=tweet)
         else:
             self.favorite_tweet(tweet)
+        """
+        pass
 
 if __name__ == '__main__':
     bot = RoboPirate()
