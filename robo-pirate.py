@@ -79,13 +79,19 @@ class RoboPirate(TwitterBot):
 
         # self.register_custom_handler(self.my_function, 60 * 60 * 24)
 
-    def get_insult(wat):
-        # print wat
-        starters = ['Ahoy! Ye be', 'Arrr! Thar be', 'Avast! Ye be', 'Avast! Ye be more foul \'an', 'Avast! Thar be', 'Avast! Ye be resemblin\'', 'Aye! No doubt ye be', 'By my reckonin\' ye be', 'Blimey! Ye \'ppear t\' be', 'Come now, fer ye be', 'D\'ye see?! Ye must be', 'Sail ho! Yer filthier \'an', 'Scupper that \'an begone! Ye be', 'Holloa! Ye be', 'How are \'ee?! Ye be', 'Shiver me timbers! Ye be', 'Show a leg! Fer ye surely be', 'Sink me! Ye be', 'Stay yer tears! Ye be', 'Stint yer clack! Ye be', 'Stop yer clapper! Ye be', 'Yo ho! Ye be', 'Yo ho! Thar be', 'Yarrr! Ye be filthier \'an', 'Blimey! Ye be filthier \'an', 'Avast! Ye be filthier \'an', 'Yo ho! Ye be filthier \'an', 'Avast! Ye be nastier \'an', 'Yarrr! Ye be nastier \'an', 'Yo ho! Ye be nastier \'an', 'Blimey! Ye be nastier \'an', 'Yo ho ho! Ye be', 'Aye! Ye be!', 'Ye be remindin\' me of',]
-        nouns = ['backsides', 'barkadeers', 'bilge waters', 'ballast pigs', 'barnacles', 'bowsprits', 'belayin\' pins', 'bilge drinkers', 'bilge rats', 'black spots', 'blaggards',  'blowfishes',  'boatswains', 'boat hooks', 'bones', 'buccaneers', 'butts', 'buttles', 'buttcabbages', 'buttnapkinsmythes', 'buttankards', 'buttossacks', 'buttards', 'cabin boys', 'carousers', 'castaways', 'cat o\' nine tails', 'chandlers', 'cogs', 'curs', 'cusses', 'dandies',  'deadlights', 'doxies', 'fish gizzards' 'freebooters', 'Frenchmen',  'futtocks', 'gangplanks', 'gibbits', 'gibbit cages', 'gizzards', 'grog blossoms', 'hawseholes', 'hempen jigs', 'hempen halters', 'hogsheads', 'holystones', 'horn swoggler', 'hulks', 'humdingers', 'interlopers', 'Jack Ketches', 'knaves', 'killicks', 'lads', 'luggers', 'lynch baits', 'poop decks', 'jim lads', 'krakens', 'landlubbers', 'lasses', 'lassies', 'lassie-lenders', 'lubbers', 'marroons', 'parrots', 'petards', 'picaroons', 'powder chests', 'peglegs', 'powder monkeys', 'pressganngs', 'privateers', 'private parts', 'privy parts',  'rapscallions', 'rope burns', 'sandcrabs', 'sassielassies', 'saw bones', 'scallywags', 'scoundrels', 'scurvy dogs', 'sea lice', 'six pounders', 'smythes', 'smythesackers', 'smythesluggers', 'smytheslorpers', 'spankers', 'strike colors', 'sea bass', 'sea dogs', 'sea witches', 'scuttle hounds', 'sluggards', 'sunken skulls', 'strumpets', 'swabbies',  'stumps', 'swashers', 'swine', 'tar stains', 'tarts', 'tarty mermaids', 'twitterfools', 'tweeples', 'tweeps', 'twenches', 'twittles', 'twittlesmiths', 'twittlesmythes', 'twits', 'wenches', 'wherries',
-            ]
-        amounts = ['barrel', 'cask', 'chest', 'draught', 'fathom', 'full hold', 'hull full',  'keg', 'keg full', 'league', 'motherload', 'tankard', 'stein', 'sea chest',]
-        adjectives = ['addle brained', 'barnacle bottomed', 'becalmed', 'bedraggled', 'b\'tween decks', 'black eyed', 'black toothed', 'blood thirsty', 'barnacled', 'barrel belly\'d', 'black hearted', 'blubberin\'', 'bow legged', 'brine crusted', 'chicken hearted', 'confounded', 'crows footed', 'drunken', 'flea bitten', 'floggish', 'fog bound', 'furlish', 'gibbitly', 'gibbitish', 'goutish', 'gout-toed', 'green gilled', 'green limbed', 'groggy', 'grog brained', 'grog headed', 'groggish', 'grog swiggin\'', 'grog snarfin\'', 'handsomely', 'hoggish', 'hornswagglish', 'horn swogglin\'', 'hulkish', 'knock kneed', 'lead slingin\'',  'lice infested', 'lily livered', 'lily sniffin\'', 'luggish', 'marroonish', 'mast huggin\'', 'one armed', 'one legged', 'one toed', 'peglegged', 'pigeon toed', 'parrot lubbin\'', 'plunderin\'', 'plunderish', 'powder wettin\'', 'pox faced', 'pox infested', 'rot mouth\'d', 'scrappy', 'scrappish', 'keelhaulish', 'motherload-ish', 'mutinous', 'rum swiggin\'', 'salt crusted', 'scutt\'ly', 'scuttlish', 'scurvish', 'scurvy', 'skirt wearin\'', 'square-rigged', 'squiffy', 'stinkin\'', 'swabbish', 'swaggardly', 'swiney', 'tar stain\'d', 'thunderin\'', 'tweetish', 'twittish', 'wind blown', 'worm infested', 'worm riddled', 'yellow', 'yellow-bell\'yd',]
+    def get_insult(self):
+        with open("etc/nouns.json", 'r') as noun:
+            nounlist = json.load(noun)
+            nouns = nounlist["nounwords"]
+        with open("etc/adjectives.json", 'r') as adjectivejson:
+            adjectivelist = json.load(adjectivejson)
+            adjectives = adjectivelist["adjectivewords"]
+        with open("etc/amounts.json", 'r') as amountjson:
+            amountlist = json.load(amountjson)
+            amounts = amountlist["amountwords"]
+        with open("etc/starters.json", 'r') as starterjson:
+            starterlist = json.load(starterjson)
+            starters = amountlist["starterterms"]
         starter = starters[random.randint(0, len(starters) - 1)]
         adj1 = adjectives[random.randint(0, len(adjectives) - 1)]
         adj2 = adjectives[random.randint(0, len(adjectives) - 1)]

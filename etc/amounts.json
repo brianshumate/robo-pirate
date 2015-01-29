@@ -1,0 +1,19 @@
+{
+    "amountwords": [
+        "barrel",
+        "cask",
+        "chest",
+        "draught",
+        "fathom",
+        "full hold",
+        "hull full",
+        "keg",
+        "keg full",
+        "league",
+        "motherload",
+        "sea chest",
+        "stein",
+        "tankard"
+    ],
+    "description": "amounts"
+}
