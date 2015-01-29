@@ -91,7 +91,7 @@ class RoboPirate(TwitterBot):
             amounts = amountlist["amountwords"]
         with open("etc/starters.json", 'r') as starterjson:
             starterlist = json.load(starterjson)
-            starters = amountlist["starterterms"]
+            starters = starterlist["starterterms"]
         starter = starters[random.randint(0, len(starters) - 1)]
         adj1 = adjectives[random.randint(0, len(adjectives) - 1)]
         adj2 = adjectives[random.randint(0, len(adjectives) - 1)]
