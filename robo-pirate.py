@@ -46,7 +46,7 @@ class RoboPirate(TwitterBot):
         self.config['tweet_interval_range'] = (120*60, 420*60)
 
         # only reply to tweets that specifically mention the bot
-        self.config['reply_direct_mention_only'] = True
+        self.config['reply_direct_mention_only'] = False
 
         # only include bot followers (and original tweeter) in @-replies
         self.config['reply_followers_only'] = False
