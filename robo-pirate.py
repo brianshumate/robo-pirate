@@ -162,7 +162,7 @@ class RoboPirate(TwitterBot):
         Twitter won't count it as a reply.
         """
 
-
+        """
         text = self.get_insult()
         prefixed_text = prefix + ' ' + text
 
@@ -170,7 +170,8 @@ class RoboPirate(TwitterBot):
         if random.randrange(100) < 10:
             self.post_tweet(prefix + ' ' + text, reply_to=tweet)
         else:
-            pass
+        """
+        pass
 
 if __name__ == '__main__':
     bot = RoboPirate()
