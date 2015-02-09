@@ -167,7 +167,7 @@ class RoboPirate(TwitterBot):
         prefixed_text = prefix + ' ' + text
 
         # let's only reply 40% of the time, otherwise fave the twutt
-        if random.randrange(100) < 40:
+        if random.randrange(100) < 10:
             self.post_tweet(prefix + ' ' + text, reply_to=tweet)
         else:
             self.favorite_tweet(tweet)
