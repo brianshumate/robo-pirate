@@ -162,20 +162,15 @@ class RoboPirate(TwitterBot):
         Twitter won't count it as a reply.
         """
 
-        """
+
         text = self.get_insult()
         prefixed_text = prefix + ' ' + text
 
-        # let's only reply 70% of the time, otherwise fave the twutt
-        def lucky(percent=70):
-            return random.randrange(100) < percent
-
-        if lucky():
+        # let's only reply 40% of the time, otherwise fave the twutt
+        if return random.randrange(100) < 40:
             self.post_tweet(prefix + ' ' + text, reply_to=tweet)
         else:
             self.favorite_tweet(tweet)
-        """
-        pass
 
 if __name__ == '__main__':
     bot = RoboPirate()
