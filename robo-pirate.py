@@ -166,11 +166,11 @@ class RoboPirate(TwitterBot):
         text = self.get_insult()
         prefixed_text = prefix + ' ' + text
 
-        # let's only reply 40% of the time, otherwise fave the twutt
+        # let's only reply 10% of the time, otherwise walk the plank
         if random.randrange(100) < 10:
             self.post_tweet(prefix + ' ' + text, reply_to=tweet)
         else:
-            self.favorite_tweet(tweet)
+            pass
 
 if __name__ == '__main__':
     bot = RoboPirate()
