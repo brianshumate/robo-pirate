@@ -9,7 +9,6 @@ from twitterbot import TwitterBot
 
 
 class RoboPirate(TwitterBot):
-
     def bot_init(self):
         """
         Initialize and configure your bot!
@@ -37,13 +36,13 @@ class RoboPirate(TwitterBot):
         ######################################
 
         # how often to tweet, in seconds
-        self.config['tweet_interval'] = 120 * 60     # 120 minutes
+        self.config['tweet_interval'] = 60 * 60  # 60 minutes
 
         # use this to define a (min, max) random range of how often to tweet
         # e.g., self.config['tweet_interval_range'] = (5*60, 10*60) # tweets every 5-10 minutes
 
         # Tweet range: every 120 to 420 minutes
-        self.config['tweet_interval_range'] = (120*60, 420*60)
+        self.config['tweet_interval_range'] = (60 * 60, 420 * 60)
 
         # only reply to tweets that specifically mention the bot
         self.config['reply_direct_mention_only'] = False
@@ -52,10 +51,10 @@ class RoboPirate(TwitterBot):
         self.config['reply_followers_only'] = False
 
         # fav any tweets that mention this bot?
-        self.config['autofav_mentions'] = False
+        self.config['autofav_mentions'] = True
 
         # fav any tweets containing these keywords?
-        self.config['autofav_keywords'] = ['pirate', 'robot pirate', 'yarrr']
+        self.config['autofav_keywords'] = ['pirate', 'robot pirate', 'yarrr', 'treasue']
 
         # follow back all followers?
         self.config['autofollow'] = True
@@ -81,98 +80,101 @@ class RoboPirate(TwitterBot):
 
         # self.register_custom_handler(self.my_function, 60 * 60 * 24)
 
+        # log path
+        self.config['log_path'] = '/home/bshumate/var/bot_logs/'
+
     def get_insult(self):
-        with open("etc/nouns.json", 'r') as noun:
+        with open("share/nouns.json", 'r') as noun:
             nounlist = json.load(noun)
             nouns = nounlist["nounwords"]
-        with open("etc/adjectives.json", 'r') as adjectivejson:
+        with open("share/adjectives.json", 'r') as adjectivejson:
             adjectivelist = json.load(adjectivejson)
             adjectives = adjectivelist["adjectivewords"]
-        with open("etc/amounts.json", 'r') as amountjson:
+        with open("share/amounts.json", 'r') as amountjson:
             amountlist = json.load(amountjson)
             amounts = amountlist["amountwords"]
-        with open("etc/starters.json", 'r') as starterjson:
+        with open("share/starters.json", 'r') as starterjson:
             starterlist = json.load(starterjson)
             starters = starterlist["starterterms"]
-        starter = starters[random.randint(0, len(starters) - 1)]
-        adj1 = adjectives[random.randint(0, len(adjectives) - 1)]
-        adj2 = adjectives[random.randint(0, len(adjectives) - 1)]
-        noun = nouns[random.randint(0, len(nouns) - 1)]
-        amount = amounts[random.randint(0, len(amounts) - 1)]
-        if adj1 == adj2:
-            adj2 = adjectives[random.randint(0, len(adjectives) - 1)]
-        if not adj1[0] in 'aeiou':
+        starter0 = starters[random.randint(0, len(starters) - 1)]
+        adjective0 = adjectives[random.randint(0, len(adjectives) - 1)]
+        adjective1 = adjectives[random.randint(0, len(adjectives) - 1)]
+        noun0 = nouns[random.randint(0, len(nouns) - 1)]
+        amount0 = amounts[random.randint(0, len(amounts) - 1)]
+        if adjective1 == adjective0:
+            adjective1 = adjectives[random.randint(0, len(adjectives) - 1)]
+        if not adjective0[0] in 'aeiou':
             an = 'a'
         else:
             an = 'an'
+        return "{starter0} {an0} {adjective0} {amoun0} 'o {adjective1} {noun0}." % (
+        starter0=starter0, an0 = an0, adjective0 = adjective0, amount0 = amount0, adjective1 = adjective1, noun0 = noun0)
 
-        return "%s %s %s %s 'o %s %s." % (starter, an, adj1, amount, adj2, noun)
+        def on_scheduled_tweet(self):
+            """
+            Make a public tweet to the bot's own timeline.
 
-    def on_scheduled_tweet(self):
-        """
-        Make a public tweet to the bot's own timeline.
+            It's up to you to ensure that it's less than 140 characters.
 
-        It's up to you to ensure that it's less than 140 characters.
+            Set tweet frequency in seconds with TWEET_INTERVAL in config.py.
+            """
+            text = self.get_insult()
+            self.post_tweet(text)
 
-        Set tweet frequency in seconds with TWEET_INTERVAL in config.py.
-        """
-        text = self.get_insult()
-        self.post_tweet(text)
+        def on_mention(self, tweet, prefix):
+            """
+            Defines actions to take when a mention is received.
 
-    def on_mention(self, tweet, prefix):
-        """
-        Defines actions to take when a mention is received.
+            tweet - a tweepy.Status object. You can access the text with
+            tweet.text
 
-        tweet - a tweepy.Status object. You can access the text with
-        tweet.text
+            prefix - the @-mentions for this reply. No need to include this in the
+            reply string; it's provided so you can use it to make sure the value
+            you return is within the 140 character limit with this.
 
-        prefix - the @-mentions for this reply. No need to include this in the
-        reply string; it's provided so you can use it to make sure the value
-        you return is within the 140 character limit with this.
+            It's up to you to ensure that the prefix and tweet are less than 140
+            characters.
 
-        It's up to you to ensure that the prefix and tweet are less than 140
-        characters.
-
-        When calling post_tweet, you MUST include reply_to=tweet, or
-        Twitter won't count it as a reply.
-        """
-        text = self.get_insult()
-        prefixed_text = prefix + ' ' + text
-        self.post_tweet(prefix + ' ' + text, reply_to=tweet)
-
-        # call this to fav the tweet!
-        # if something:
-        #     self.favorite_tweet(tweet)
-
-    def on_timeline(self, tweet, prefix):
-        """
-        Defines actions to take on a timeline tweet.
-
-        tweet - a tweepy.Status object. You can access the text with
-        tweet.text
-
-        prefix - the @-mentions for this reply. No need to include this in the
-        reply string; it's provided so you can use it to make sure the value
-        you return is within the 140 character limit with this.
-
-        It's up to you to ensure that the prefix and tweet are less than 140
-        characters.
-
-        When calling post_tweet, you MUST include reply_to=tweet, or
-        Twitter won't count it as a reply.
-        """
-
-        """
-        text = self.get_insult()
-        prefixed_text = prefix + ' ' + text
-
-        # let's only reply 10% of the time, otherwise walk the plank
-        if random.randrange(100) < 10:
+            When calling post_tweet, you MUST include reply_to=tweet, or
+            Twitter won't count it as a reply.
+            """
+            text = self.get_insult()
+            prefixed_text = prefix + ' ' + text
             self.post_tweet(prefix + ' ' + text, reply_to=tweet)
-        else:
-        """
-        pass
 
-if __name__ == '__main__':
-    bot = RoboPirate()
-    bot.run()
+            # call this to fav the tweet!
+            # if something:
+            #     self.favorite_tweet(tweet)
+
+        def on_timeline(self, tweet, prefix):
+            """
+            Defines actions to take on a timeline tweet.
+
+            tweet - a tweepy.Status object. You can access the text with
+            tweet.text
+
+            prefix - the @-mentions for this reply. No need to include this in the
+            reply string; it's provided so you can use it to make sure the value
+            you return is within the 140 character limit with this.
+
+            It's up to you to ensure that the prefix and tweet are less than 140
+            characters.
+
+            When calling post_tweet, you MUST include reply_to=tweet, or
+            Twitter won't count it as a reply.
+            """
+
+            """
+            text = self.get_insult()
+            prefixed_text = prefix + ' ' + text
+
+            # let's only reply 10% of the time, otherwise walk the plank
+            if random.randrange(100) < 10:
+                self.post_tweet(prefix + ' ' + text, reply_to=tweet)
+            else:
+            """
+            pass
+
+    if __name__ == '__main__':
+        bot = RoboPirate()
+        bot.run()

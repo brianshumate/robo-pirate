@@ -68,7 +68,7 @@ class TwitterBot:
         self.screen_name = self.api.me().screen_name
 
         logging.basicConfig(format='%(asctime)s | %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', 
-            filename=self.screen_name + '.log',
+            filename=self.config['log_path'] + self.screen_name + '.log',
             level=self.config['logging_level'])
 
         logging.info('Initializing bot...')

@@ -56,3 +56,6 @@ docs/_build/
 *.pkl
 
 access.json
+.idea
+.tm_properties
+
