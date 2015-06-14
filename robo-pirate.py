@@ -6,6 +6,7 @@ import sys
 import re
 import random
 from twitterbot import TwitterBot
+from os.path import expanduser
 
 
 class RoboPirate(TwitterBot):
@@ -81,7 +82,11 @@ class RoboPirate(TwitterBot):
         # self.register_custom_handler(self.my_function, 60 * 60 * 24)
 
         # log path
-        self.config['log_path'] = '/home/bshumate/var/bot_logs/'
+        home = expanduser("~")
+        self.config['log_path'] = home + '/var/bot_logs/'
+
+        # what's up with reply interval?
+        self.config['reply_interval'] = 7 * 60
 
     def get_insult(self):
         with open("share/nouns.json", 'r') as noun:
@@ -107,75 +112,27 @@ class RoboPirate(TwitterBot):
             an0 = 'a'
         else:
             an0 = 'an'
-        return "{starter0} {an0} {adjective0} {amoun0} 'o {adjective1} {noun0}.".format(starter0=starter0, an0=an0,
+        return "{starter0} {an0} {adjective0} {amount0} 'o {adjective1} {noun0}.".format(starter0=starter0, an0=an0,
                                                                                         adjective0=adjective0,
                                                                                         amount0=amount0,
                                                                                         adjective1=adjective1,
                                                                                         noun0=noun0)
 
-        def on_scheduled_tweet(self):
-            """
-            Make a public tweet to the bot's own timeline.
+    def on_scheduled_tweet(self):
+        text = self.get_insult()
+        self.post_tweet(text)
 
-            It's up to you to ensure that it's less than 140 characters.
+    def on_mention(self, tweet, prefix):
+        text = self.get_insult()
+        prefixed_text = prefix + ' ' + text
+        self.post_tweet(prefix + ' ' + text, reply_to=tweet)
 
-            Set tweet frequency in seconds with TWEET_INTERVAL in config.py.
-            """
+    def on_timeline(self, tweet, prefix):
+        if random.randrange(100) < 2:
             text = self.get_insult()
-            self.post_tweet(text)
-
-        def on_mention(self, tweet, prefix):
-            """
-            Defines actions to take when a mention is received.
-
-            tweet - a tweepy.Status object. You can access the text with
-            tweet.text
-
-            prefix - the @-mentions for this reply. No need to include this in the
-            reply string; it's provided so you can use it to make sure the value
-            you return is within the 140 character limit with this.
-
-            It's up to you to ensure that the prefix and tweet are less than 140
-            characters.
-
-            When calling post_tweet, you MUST include reply_to=tweet, or
-            Twitter won't count it as a reply.
-            """
-            text = self.get_insult()
-            prefixed_text = prefix + ' ' + text
-            self.post_tweet(prefix + ' ' + text, reply_to=tweet)
-
-            # call this to fav the tweet!
-            # if something:
-            #     self.favorite_tweet(tweet)
-
-        def on_timeline(self, tweet, prefix):
-            """
-            Defines actions to take on a timeline tweet.
-
-            tweet - a tweepy.Status object. You can access the text with
-            tweet.text
-
-            prefix - the @-mentions for this reply. No need to include this in the
-            reply string; it's provided so you can use it to make sure the value
-            you return is within the 140 character limit with this.
-
-            It's up to you to ensure that the prefix and tweet are less than 140
-            characters.
-
-            When calling post_tweet, you MUST include reply_to=tweet, or
-            Twitter won't count it as a reply.
-            """
-
-            text = self.get_insult()
-            prefixed_text = prefix + ' ' + text
-
-            # let's only reply rarely otherwise walk the plank
-            if random.randrange(100) < 2:
-                self.post_tweet(prefix + ' ' + text, reply_to=tweet)
-            else:
-                self.favorite_tweet(tweet)
-
+            self.post_tweet(text, reply_to=tweet)
+        else:
+            self.favorite_tweet(tweet)
 
 if __name__ == '__main__':
     bot = RoboPirate()

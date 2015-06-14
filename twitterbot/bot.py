@@ -228,7 +228,7 @@ class TwitterBot:
             if any(w in words for w in self.config['autofav_keywords']):
                 self.favorite_tweet(tweet)
 
-            #time.sleep(self.config['reply_interval'])
+            time.sleep(self.config['reply_interval'])
 
 
     def _handle_mentions(self):
