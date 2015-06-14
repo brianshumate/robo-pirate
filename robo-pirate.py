@@ -107,8 +107,8 @@ class RoboPirate(TwitterBot):
             an = 'a'
         else:
             an = 'an'
-        return "{starter0} {an0} {adjective0} {amoun0} 'o {adjective1} {noun0}." % (
-        starter0=starter0, an0 = an0, adjective0 = adjective0, amount0 = amount0, adjective1 = adjective1, noun0 = noun0)
+        return "{starter0} {an0} {adjective0} {amoun0} 'o {adjective1} {noun0}.".format(
+        starter0=starter0, an0=an0, adjective0=adjective0, amount0=amount0, adjective1=adjective1, noun0=noun0)
 
         def on_scheduled_tweet(self):
             """
