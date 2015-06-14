@@ -104,10 +104,14 @@ class RoboPirate(TwitterBot):
         if adjective1 == adjective0:
             adjective1 = adjectives[random.randint(0, len(adjectives) - 1)]
         if not adjective0[0] in 'aeiou':
-            an = 'a'
+            an0 = 'a'
         else:
-            an = 'an'
-        return "{starter0} {an0} {adjective0} {amoun0} 'o {adjective1} {noun0}.".format(starter0=starter0, an0=an0, adjective0=adjective0, amount0=amount0, adjective1=adjective1, noun0=noun0)
+            an0 = 'an'
+        return "{starter0} {an0} {adjective0} {amoun0} 'o {adjective1} {noun0}.".format(starter0=starter0, an0=an0,
+                                                                                        adjective0=adjective0,
+                                                                                        amount0=amount0,
+                                                                                        adjective1=adjective1,
+                                                                                        noun0=noun0)
 
         def on_scheduled_tweet(self):
             """
@@ -163,17 +167,15 @@ class RoboPirate(TwitterBot):
             Twitter won't count it as a reply.
             """
 
-            """
             text = self.get_insult()
             prefixed_text = prefix + ' ' + text
 
-            # let's only reply 10% of the time, otherwise walk the plank
-            if random.randrange(100) < 10:
+            # let's only reply rarely otherwise walk the plank
+            if random.randrange(100) < 2:
                 self.post_tweet(prefix + ' ' + text, reply_to=tweet)
             else:
-            """
-            pass
+                pass
 
-    if __name__ == '__main__':
-        bot = RoboPirate()
-        bot.run()
+if __name__ == '__main__':
+    bot = RoboPirate()
+    bot.run()
