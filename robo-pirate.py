@@ -174,7 +174,8 @@ class RoboPirate(TwitterBot):
             if random.randrange(100) < 2:
                 self.post_tweet(prefix + ' ' + text, reply_to=tweet)
             else:
-                pass
+                self.favorite_tweet(tweet)
+
 
 if __name__ == '__main__':
     bot = RoboPirate()
