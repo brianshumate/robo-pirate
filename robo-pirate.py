@@ -128,11 +128,14 @@ class RoboPirate(TwitterBot):
         self.post_tweet(prefix + ' ' + text, reply_to=tweet)
 
     def on_timeline(self, tweet, prefix):
+        pass
+        """
         if random.randrange(100) < 2:
             text = self.get_insult()
             self.post_tweet(text, reply_to=tweet)
         else:
             self.favorite_tweet(tweet)
+        """
 
 if __name__ == '__main__':
     bot = RoboPirate()
