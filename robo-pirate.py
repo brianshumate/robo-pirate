@@ -37,13 +37,13 @@ class RoboPirate(TwitterBot):
         ######################################
 
         # how often to tweet, in seconds
-        self.config['tweet_interval'] = 60 * 60  # 60 minutes
+        self.config['tweet_interval'] = 90 * 60  # 90 minutes
 
         # use this to define a (min, max) random range of how often to tweet
         # e.g., self.config['tweet_interval_range'] = (5*60, 10*60) # tweets every 5-10 minutes
 
-        # Tweet range: every 120 to 420 minutes
-        self.config['tweet_interval_range'] = (60 * 60, 420 * 60)
+        # Tweet range: every 90 to 120 minutes
+        self.config['tweet_interval_range'] = (90 * 60, 120 * 60)
 
         # only reply to tweets that specifically mention the bot
         self.config['reply_direct_mention_only'] = False
