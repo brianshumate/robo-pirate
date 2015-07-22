@@ -66,7 +66,7 @@ cd robo-pirate
 
 Then, to quote the venerable @densoneold,
 
-> commands
+> COMMANDS
 
 ```
 mkvirtualenv robo-pirate
