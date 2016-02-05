@@ -4,8 +4,9 @@
 
 import json
 import random
-from twitterbot import TwitterBot
 from os.path import expanduser
+
+from twitterbot import TwitterBot
 
 
 class RoboPirate(TwitterBot):
