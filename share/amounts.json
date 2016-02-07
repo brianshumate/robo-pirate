@@ -1,4 +1,5 @@
 {
+    "description": "amounts",
     "amountwords": [
         "barrel",
         "cask",
@@ -12,8 +13,8 @@
         "league",
         "mother lode",
         "sea chest",
+        "sack",
         "stein",
         "tankard"
-    ],
-    "description": "amounts"
+    ]
 }

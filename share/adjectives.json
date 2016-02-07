@@ -1,6 +1,11 @@
 {
+    "description": "insulting adjectives",
     "adjectivewords": [
+        "addled",
         "addle brained",
+        "adrift",
+        "afeared",
+        "aloft",
         "b'tween decks",
         "barnacle bottomed",
         "barnacled",
@@ -86,6 +91,5 @@
         "worm riddled",
         "yellow",
         "yellow-bell'yd"
-    ],
-    "description": "insulting adjectives"
+    ]
 }

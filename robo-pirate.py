@@ -1,9 +1,13 @@
 #!/usr/bin/env python2
-"""This is @robo_pirate. Yarrr, matey."""
+"""
+This is @robo_pirate.
+
+Yarrr, matey.
+"""
 # -*- coding: utf-8 -*- #
 
 import json
-import random
+from random import randint
 from os.path import expanduser
 
 from twitterbot import TwitterBot
@@ -13,12 +17,7 @@ class RoboPirate(TwitterBot):
     """Bot class."""
 
     def bot_init(self):
-        """
-        Initialize and configure your bot.
-
-        Use this function to set options and initialize your own custom bot
-        state (if any).
-        """
+        """Initialize and configure bot."""
         with open("etc/access.json", 'r') as access:
             authdb = json.load(access)
 
@@ -27,12 +26,8 @@ class RoboPirate(TwitterBot):
         self.config['access_key'] = authdb["Access_Token"]
         self.config['access_secret'] = authdb["Access_Token_Secret"]
 
-        # How often to tweet, in seconds
+        # Baseline tweet frequency, in seconds
         self.config['tweet_interval'] = 42 * 60  # 42 minutes
-
-        # Use this to define a (min, max) random range of how often to tweet
-        # e.g., self.config['tweet_interval_range'] = (5*60, 10*60)
-        # tweets every 5-10 minutes
 
         # Tweet range: every 42 to 90 minutes
         self.config['tweet_interval_range'] = (42 * 60, 90 * 60)
@@ -77,13 +72,13 @@ class RoboPirate(TwitterBot):
         with open("share/starters.json", 'r') as starterjson:
             starterlist = json.load(starterjson)
             starters = starterlist["starterterms"]
-        starter0 = starters[random.randint(0, len(starters) - 1)]
-        adj0 = adjectives[random.randint(0, len(adjectives) - 1)]
-        adj1 = adjectives[random.randint(0, len(adjectives) - 1)]
-        noun0 = nouns[random.randint(0, len(nouns) - 1)]
-        amount0 = amounts[random.randint(0, len(amounts) - 1)]
+        starter0 = starters[randint(0, len(starters) - 1)]
+        adj0 = adjectives[randint(0, len(adjectives) - 1)]
+        adj1 = adjectives[randint(0, len(adjectives) - 1)]
+        noun0 = nouns[randint(0, len(nouns) - 1)]
+        amount0 = amounts[randint(0, len(amounts) - 1)]
         if adj1 == adj0:
-            adj1 = adjectives[random.randint(0, len(adjectives) - 1)]
+            adj1 = adjectives[randint(0, len(adjectives) - 1)]
         if not adj0[0] in 'aeiou':
             an0 = 'a'
         else:
@@ -108,15 +103,16 @@ class RoboPirate(TwitterBot):
         self.post_tweet(prefix + ' ' + text, reply_to=tweet)
 
     def on_timeline(self, tweet, prefix):
-        """Reply to timeline items."""
-        pass
         """
-        if random.randrange(100) < 2:
+        Randomly reply to timeline items.
+
+        Make this walk the plank if it causes too much API usage
+        """
+        if randint(0, 100) < 2:
             text = self.get_insult()
             self.post_tweet(text, reply_to=tweet)
         else:
             self.favorite_tweet(tweet)
-        """
 
 if __name__ == '__main__':
     bot = RoboPirate()
