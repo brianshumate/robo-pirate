@@ -49,7 +49,7 @@ class RoboPirate(TwitterBot):
                                            'treasue']
 
         # follow back all followers?
-        self.config['autofollow'] = True
+        self.config['autofollow'] = False
 
         # Log path
         home = expanduser("~")
