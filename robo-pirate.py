@@ -8,7 +8,7 @@ Yarrr, matey.
 
 import json
 from random import randint
-from os.path import expanduser
+# from os.path import expanduser
 
 from twitterbot import TwitterBot
 
@@ -52,8 +52,8 @@ class RoboPirate(TwitterBot):
         self.config['autofollow'] = False
 
         # Log path
-        home = expanduser("~")
-        self.config['log_path'] = home + '/var/bot_logs/'
+        # home = expanduser("~")
+        self.config['log_path'] ='/home/brian/var/bot_logs/'
 
         # What's up with reply interval?
         # self.config['reply_interval'] = 7 * 60
