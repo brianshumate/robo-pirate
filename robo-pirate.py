@@ -33,7 +33,7 @@ class RoboPirate(TwitterBot):
         self.config['tweet_interval_range'] = (42 * 60, 90 * 60)
 
         # Reply to tweets that specifically mention the bot
-        self.config['reply_direct_mention_only'] = False
+        self.config['reply_direct_mention_only'] = True
 
         # Include bot followers (and original tweeter) in @-replies
         self.config['reply_followers_only'] = False
@@ -49,7 +49,7 @@ class RoboPirate(TwitterBot):
                                            'treasue']
 
         # follow back all followers?
-        self.config['autofollow'] = False
+        self.config['autofollow'] = True
 
         # Log path
         # home = expanduser("~")
